@@ -1,12 +1,12 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
-const Index = import("../views/index.vue");
+const Index = import("@/views/index.vue");
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/microappchild1",
     name: "Index",
-    component: Index,
+    component: () => import("@/views/index.vue"),
   },
   {
     path: "/microappchild1/a",
@@ -20,8 +20,8 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/:pathMatch(.*)*",
-    // redirect: "/",
-    component: Index,
+    redirect: "/microappchild1",
+    // component: Index,
   },
 ];
 

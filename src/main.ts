@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router/index'
 import { Router } from 'vue-router'
 
+window.CESIUM_BASE_URL = "/microappchild1/static/";
+
 declare global {
   interface Window {
     eventCenterForAppNameVite: any;

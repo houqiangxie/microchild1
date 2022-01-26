@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Activex5.0调试</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!-- <link rel="stylesheet" type="text/css"  href="css/normalize.min.css"> -->
+    <!-- <link rel="stylesheet" type="text/css"  href="css/style.css"> -->
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="./js/jquery.min.js"
+    ></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="./js/callback.js"
+    ></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="./js/wsPlugin.js"
+    ></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="./js/init.js"
+    ></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="./js/msg.js"
+    ></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="./js/voice.js"
+    ></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="./js/video.js"
+    ></script>
+  </head>
+  <body onload="Load()" onbeforeunload="Logout()" style="height: 100%">
+    <div id="connStatus" style="background-color: red;"></div>
+    <div id="modelId" style="height: 30%">
+      <span><h3>界面模式</h3></span>
+      <div>
+        <input type="checkbox" id="callSurfaceID"  checked>
+        <label for="callSurfaceID">显示呼叫界面</label>
+        <input type="checkbox" id="msgSurfaceID">
+        <label for="msgSurfaceID">显示消息界面</label>
+      </div>
+      <div>
+        <button id="changeSurfaceModelID" style="padding:5px" onclick="changeSurfaceModel()">更改界面模式</button>
+      </div>
+    </div>
+      <div id="loginDiv" style="height: 30%">
+        <span><h3>登录</h3></span>
+            用户名：<input id="userName" type="text" width="120" value="2100100"/>
+            密 码：<input id="password" type="password" width="120" value="2100100"/>
+            <!-- IP地址：<input id="IPAddress" type="text" width="120" value="192.168.4.193"/> -->
+            IP地址：<input id="IPAddress" type="text" width="120" value="58.248.254.109"/>
+
+            <button id="btnLogin" style="padding:5px" onclick="AcitvexInit()">登录</button>
+            <button id="btnLogout" style="padding:5px" onclick="DestrUct()">注销</button>
+            <br>
+            终端号码：<input id="teminalNo" type="text" width="120" value="3010"/>
+            组号码：<input id="groupNo" type="text" width="120" value="3000"/>
+      </div>
+       <div>
+        <div id="ocxdiv"  style="height: 0px;">
+                <!-- <span><h3>视频界面</h3></span> -->
+                <object id="csocx" classid="clsid:7742B7D2-5D75-4801-8836-115247F9E4FA" codebase="./ActiveX/PTYTDispatch5.0ActiveX.cab#version=1,0,12" style="width: 0px; height: 550px;"></object>
+        </div>
+       <div id="div_Operate"  style="display: none;">
+        <div id="div_call" style="float:left;width:30%;height:99%;border: 1px solid rgb(61, 54, 54);padding: 0px;"> 
+              <span><h3>呼叫操作</h3></span>
+                <p></p>
+                    <div>
+                        <br>
+                         <label id="CallState">状态</label>
+                        <br>
+                        <button id="btnShowSingleCall" onclick="SingleCall()">发起呼叫</button>
+                        <button id="btnShowSingleVideoCall" onclick="SingleVideoCall()">发起视频呼叫</button>
+                    </div>
+                        <div>
+                            <button id="btnShowGCall" onclick="GroupCall()">发起组呼</button>
+                            <span>
+                                <button id="btnShowGCall" onclick="GroupBroadcast()">广播</button>
+                            </span>
+                            <br>
+                            <label id="GCallMsg"></label><br>
+                            <div id='GCallOperate'></div>
+                        </div>
+                        <div>
+                          临时组号码(,隔开)：<input id="tempGroupNo" type="text" width="120" value="3010,1012"/>
+                          <button id="btnShowGCall" onclick="tempGroupCall()">发起临时组呼</button>
+                      </div>
+                <p></p>
+                    窗口X坐标：<input id="CallFrmLocationX" style="IME-MODE: disabled; WIDTH: 60px; HEIGHT: 15px" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                        onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="5" size="14" name="amount" type="text" value="10"/><br>
+                    窗口Y坐标：<input id="CallFrmLocationY" style="IME-MODE: disabled; WIDTH: 60px; HEIGHT: 15px" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                        onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="5" size="14" name="amount" type="text" value="800"/><br>
+                        <button id="btnShowSingleCall" onclick="MoveCallFrm()">移动呼叫窗口</button>
+        </div>
+        <div id="div_video" style="float: left;height:99%;border: 1px solid rgb(61, 54, 54);padding: 0px;"> 
+            <span><h3>视频操作</h3></span>
+                  <p></p>
+                      <div>
+                          <button id="btnShowVideo" onclick="ShowVideByNo()">查看视频</button>
+                          <button id="btnShowVideo" onclick="UploadVideByNo()">上传视频</button>
+                          <!-- <input id="videoHandler" style="IME-MODE: disabled; WIDTH: 60px; HEIGHT: 15px" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                          onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="5" size="14" type="text" value=""/>
+                          <button id="btnVideoCapture" onclick="closeVideo()">关闭视频</button> -->
+                      </div>
+
+          <button
+            onmousedown="PtzCtrl(PtzCtrlEnum.PTZ_LEFT)"
+            onmouseup="PtzCtrl(PtzCtrlEnum.PTZ_STOP)"
+          >
+            👈
+          </button>
+          <button
+            onmousedown="PtzCtrl(PtzCtrlEnum.PTZ_RIGHT)"
+            onmouseup="PtzCtrl(PtzCtrlEnum.PTZ_STOP)"
+          >
+            👉
+          </button>
+          <button
+            onmousedown="PtzCtrl(PtzCtrlEnum.PTZ_UP)"
+            onmouseup="PtzCtrl(PtzCtrlEnum.PTZ_STOP)"
+          >
+            👆
+          </button>
+          <button
+            onmousedown="PtzCtrl(PtzCtrlEnum.PTZ_DOWN)"
+            onmouseup="PtzCtrl(PtzCtrlEnum.PTZ_STOP)"
+          >
+            👇
+          </button>
+          <button
+            onmousedown="PtzCtrl(PtzCtrlEnum.PTZ_UPLEFT)"
+            onmouseup="PtzCtrl(PtzCtrlEnum.PTZ_STOP)"
+          >
+            ↖
+          </button>
+          <button
+            onmousedown="PtzCtrl(PtzCtrlEnum.PTZ_DOWNLEFT)"
+            onmouseup="PtzCtrl(PtzCtrlEnum.PTZ_STOP)"
+          >
+            ↙
+          </button>
+          <button
+            onmousedown="PtzCtrl(PtzCtrlEnum.PTZ_UPRIGHT)"
+            onmouseup="PtzCtrl(PtzCtrlEnum.PTZ_STOP)"
+          >
+            ↗
+          </button>
+          <button
+            onmousedown="PtzCtrl(PtzCtrlEnum.PTZ_DOWNRIGHT)"
+            onmouseup="PtzCtrl(PtzCtrlEnum.PTZ_STOP)"
+          >
+            ↘
+          </button>
+          <br />
+          <button
+            onmousedown="PtzCtrl(PtzCtrlEnum.PTZ_ZOOMIN)"
+            onmouseup="PtzCtrl(PtzCtrlEnum.PTZ_STOP)"
+          >
+            放大
+          </button>
+          <button
+            onmousedown="PtzCtrl(PtzCtrlEnum.PTZ_ZOOMOUT)"
+            onmouseup="PtzCtrl(PtzCtrlEnum.PTZ_STOP)"
+          >
+            缩小
+          </button>
+          <!-- <button  onmousedown="PtzCtrl(25)" onmouseup="PtzCtrl(20)">聚焦+</button>
+                        <button  onmousedown="PtzCtrl(26)" onmouseup="PtzCtrl(20)">聚焦-</button>
+                        <button  onmousedown="PtzCtrl(28)" onmouseup="PtzCtrl(20)">光圈+</button>
+                        <button  onmousedown="PtzCtrl(27)" onmouseup="PtzCtrl(20)">光圈-</button> -->
+                  <p>
+                      <span>
+                      窗口X坐标：<input id="VideoFrmLocationX" style="IME-MODE: disabled; WIDTH: 60px; HEIGHT: 15px" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                          onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="5" size="14" name="amount" type="text" value="50"/>
+                      窗口Y坐标：<input id="VideoFrmLocationY" style="IME-MODE: disabled; WIDTH: 60px; HEIGHT: 15px" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                          onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="5" size="14" name="amount" type="text" value="50"/><br>
+                      窗口宽度：<input id="VideoFrmWidth" style="IME-MODE: disabled; WIDTH: 60px; HEIGHT: 15px" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                          onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="5" size="14" name="amount" type="text" value="800"/>
+                      窗口高度：<input id="VideoFrmHeight" style="IME-MODE: disabled; WIDTH: 60px; HEIGHT: 15px" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                          onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="5" size="14" name="amount" type="text" value="520"/><br>
+                          <button id="btnShowVideoForm" onclick="EditVideoForm()">修改视频窗口</button>
+                       </span>
+                       <div>
+                        视频背景色：<input id="tbVideoBgcolor"  type="color"/><br>
+                            <button id="btnVideoBgcolor" onclick="SetVideoBgcolor()">修改视频背景色</button>
+                        视频标题背景色：<input id="tbVideoTitleBgcolor"   type="color"/><br>
+                            <button id="btnVideoTitleBgcolor" onclick="SetVideoTitleBgcolor()">视频标题背景色</button>
+                         </div>
+                       <div>
+                        <input type="radio" id="fourScreen" name="videoType" />列屏
+                        <input type="radio" id="sevenScreen" name="videoType" />纵横屏
+                        <input type="radio" id="oneScreen" name="videoType" />单屏
+                        <br />
+                        <button id="btnSetShow" onclick="SetVideoType()">设置视频类型</button>
+                      </div>
+                      <div>
+                        截屏前先选中视频
+                        <input type="text" id="capturefile" value="D:\1.jpg"/>
+                        <button id="btnVideoCapture" onclick="captureVideo()">视频截屏</button>
+                      </div>
+                  </p>
+        </div>
+        <div style="float: left;;width:30%;height:99%;border: 1px solid rgb(61, 54, 54);padding: 0px;">
+          <hr />
+          <span><h3>消息</h3></span>
+          <div id="msgSurfaceDiv">
+            <button id="btnShowMSGWindow" onclick="ShowMSG()">
+              打开消息面板
+            </button>
+          </div>
+          <div id="msgNoSurfaceDiv">
+          <div>
+          <div id="div_SendMSG">
+            <textarea
+              id="msgContent"
+              style="border:1px;"
+              rows="3"
+              cols="50"
+              maxlength="300"
+              required="true"
+              placeholder="请填入发送信息"
+            ></textarea
+            ><br />
+            <button id="btnSendMSG" onclick="SendMSG2(0,0,0)">发送信息</button>
+            <button id="btnSendGMSG" onclick="SendMSG3(1,0,0)">
+              发送组信息
+            </button>
+            
+            <div>
+              临时组号码(,隔开)：<input id="tbsendMsgNos" type="text" width="120" value="3010,1012"/>
+              <button id="btnShowGCall" onclick="SendMSG4(0,0,0)">群发</button>
+          </div>
+          </div>
+            <input type="file" id="fileDilog" />
+            <button id="btnUpload" onclick="MSGUploadFile()">上传文件</button>
+            <br />
+            <button id="btnSendFile" onclick="SendMSG2(0,5,0)">
+              发送文件消息
+            </button>
+
+            <input
+              type="text"
+              id="tbDownFileChSmsID"
+              placeholder="输入chSMSid号码"
+            /><br />
+            <input
+              type="text"
+              id="tbLocalDownFile"
+              placeholder="输入下载目录"
+            /><br />
+            <input
+              type="text"
+              id="tbRemoteDownFile"
+              style="width:220px;border: rgb(3, 3, 43);border-width:2px;"
+              placeholder="请输入下载文件"
+            /><br />
+            <button id="btnDownload" onclick="MSGDownloadFile()">
+              下载文件
+            </button>
+          </div>
+          <div
+            id="div_ShowMSG"
+            style="float: left;width:49%;border: 2px;background-color:cornsilk;"
+          >
+            <h5>发送的消息</h5>
+          </div>
+          <div
+            id="div_ShowRevMSG"
+            style="float:right;width:49%;border: 2px;background-color:azure;text-align:right;"
+          >
+            <h5>接收到的消息</h5>
+          </div>
+        </div>
+      </div>
+        <!-- <div id="div_Setting" style="width: 100%;">
+                <span>
+                        设置类型：<input id="tb_SettingType" type="text" width="120" value="5"/>
+                        设置项名称：<input id="tb_SettingName" type="text" width="120" value="appLogSwitch"/>
+                        设置项值：<input id="tb_SettingValue" type="text" width="120" value="1"/>
+                </span>
+                <span> 
+                    <button id="btnGetSetting" onclick="GetAllSetting()">获取设置</button>
+                    <button id="btnGetSetting" onclick="GetTypeSetting()">获取一项设置</button>
+                    <button id="btnGetSetting" onclick="SetTerminalSetting()">设置终端某项</button>
+                </span>
+                <div id="div_Setting_Content">
+    
+                </div>
+            </div> -->
+    </div>
+  </body>
+</html>

@@ -1,0 +1,345 @@
+
+.leftDraw .leftMainContent .middleCont{
+  padding:0px 12px 0px 15px;
+}
+.leftDraw .leftMainContent .middleCont .spareTitle{
+  color:#f9fc1f;
+  font-size:12px;
+  margin-top:16px;
+  letter-spacing: 1px;
+  margin-bottom:20px;
+  text-align:left;
+}
+.leftDraw .leftMainContent .middleCont .spareTitle .iconfont{
+  padding-right:5px;
+}
+/*粒子特效*/
+.leftDraw .leftMainContent .middleCont .particle{
+  display: flex;
+  flex-direction: row;
+}
+.leftDraw .leftMainContent .middleCont .particle .img{
+  width:119px;
+  height:67px;
+  background:rgba(66,106,215,0.2);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.leftDraw .leftMainContent .middleCont .particle .img.active{
+  border:1px solid #3d6cf9;
+}
+.leftDraw .leftMainContent .middleCont .particle .img:first-child{
+  margin-right:8px;
+}
+/*军事标绘*/
+.leftDraw .leftMainContent .middleCont .military{
+  display: flex;
+  flex-direction: row;
+}
+.leftDraw .leftMainContent .middleCont .military .img{
+  width: 80px;
+  height:67px;
+  background:rgba(66,106,215,0.2);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right:8px;
+}
+.leftDraw .leftMainContent .middleCont .military .img.active{
+  border:1px solid #3d6cf9;
+}
+/*POI标绘*/
+.leftDraw .leftMainContent .middleCont .poi{
+  width:100%;
+  height:135px;
+  overflow: hidden;
+}
+.leftDraw .leftMainContent .middleCont .poi .poismall{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width:107%;
+  height:135px;
+  overflow-y:scroll;
+}
+.leftDraw .leftMainContent .middleCont .poi .poismall .img{
+  width:47px;
+  height:47px;
+  background:rgba(66,106,215,0.2);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right:5px;
+  margin-bottom:5px;
+}
+.leftDraw .leftMainContent .middleCont .poi .poismall .img img{
+  width:29px;
+  height:29px;
+}
+.leftDraw .leftMainContent .middleCont .poi .poismall .img.active{
+  border:1px solid #3d6cf9;
+}
+/*GLB模型*/
+.leftDraw .leftMainContent .middleCont .glb{
+  width:100%;
+  max-height:235px;
+  overflow: hidden;
+}
+.leftDraw .leftMainContent .middleCont .glb .glbsmall{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width:110%;
+  max-height:235px;
+  overflow-y:scroll;
+}
+.leftDraw .leftMainContent .middleCont .glb .glbsmall .img{
+  width:119px;
+  height:67px;
+  background:rgba(66,106,215,0.2);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right:8px;
+  margin-bottom:12px;
+}
+.leftDraw .leftMainContent .middleCont .glb .glbsmall .img img{
+  width:71px;
+  height:57px;
+}
+.leftDraw .leftMainContent .middleCont .glb .glbsmall .img.active{
+  border:1px solid #3d6cf9;
+}
+/*tab标签*/
+.tabcard{
+  margin:0px -11px;
+}
+.tabcard .ivu-tabs-bar{
+  margin-bottom:0px;
+  border-bottom:1px solid #387ee3 !important;
+}
+.ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab-active{
+  background-image: linear-gradient(rgba(18,43,108,1), rgba(77,142,235,0.6)) !important;
+  border:1px solid #387ee3 !important;
+  color:#fff !important;
+}
+.ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab{
+  border-radius: 0px;
+  margin-right:0px;
+  background:rgba(18,43,108,1);
+  border:none;
+  border-left:1px solid rgba(54,121,220,0.2);
+  border-right:1px solid rgba(54,121,220,0.2);
+  border-bottom:1px solid #387ee3;
+  color:#5bb0fb;
+}
+.tabcard .ivu-tabs-nav .ivu-tabs-tab .ivu-icon{
+  width:45px;
+  height:22px;
+  font-size:16px;
+}  
+
+/*树形列表样式*/
+.treeListStyle.ivu-tree:first-child{
+  margin-top:30px;
+}
+.treeListStyle.ivu-tree{
+  background:rgba(56,126,227,0.3);
+  border-radius: 5px;
+  margin-bottom:10px;
+  width:100%;
+}
+.treeListStyle.ivu-tree.active{
+  background:rgba(255,255,255,0.05);
+}
+.treeListStyle.ivu-tree.active ul.ivu-tree-children{
+  color:#e7c57a;
+  font-size:12px;
+  letter-spacing: 1px;
+}
+.treeListStyle.ivu-tree ul.ivu-tree-children{
+  color:#fff;
+  font-size:12px;
+  letter-spacing: 1px;
+}
+.treeListStyle.ivu-tree.active ul.ivu-tree-children .ivu-tree-title .ivu-icon,
+.treeListStyle ul.ivu-tree-children .ivu-tree-title .ivu-icon{
+  font-size:14px;
+}
+.treeListStyle.ivu-tree.active .ivu-tree-arrow{
+  color:#e7c57a;
+}
+.treeListStyle.ivu-tree .ivu-checkbox-wrapper{
+  line-height: 35px;
+  margin-left: 8px;
+  margin-right: 15px;
+
+}
+.treeListStyle.ivu-tree .ivu-checkbox-inner{
+  width: 14px;
+  height: 14px;
+  border: 1px solid #dcdee238;
+  background-color: #ffffff03;
+}
+/*展开关闭的小箭头*/
+.treeListStyle .ivu-tree-arrow{
+  float: right;
+  padding-right: 28px;
+  color: #fff;
+  line-height: 35px;
+}
+.treeListStyle.ivu-tree li ul{
+  padding:0px;
+}
+.treeListStyle ul.ivu-tree-children .ivu-tree-title{
+  color:#fff;
+  font-size:12px;
+  letter-spacing: 1px;
+  height: 13px;
+  line-height: 13px;
+  vertical-align: unset;
+}
+.treeListStyle ul.ivu-tree-children li ul.ivu-tree-children{
+  background:rgba(18,43,108,1);
+  color:#fff !important;
+  border-left:1px solid #426ad73b;
+  border-right:1px solid #426ad73b;
+  border-bottom:1px solid #426ad73b;
+  height: 35px;
+  line-height: 35px;
+}
+.treeListStyle.GLB ul.ivu-tree-children li ul.ivu-tree-children .ivu-icon{
+  color:#fb9b1f;
+}
+.treeListStyle.QX ul.ivu-tree-children li ul.ivu-tree-children .ivu-icon{
+  color:#10e592;
+}
+.treeListStyle.BIM ul.ivu-tree-children li ul.ivu-tree-children .ivu-icon{
+  color:#fbf31f;
+}
+.treeListStyle.JZ ul.ivu-tree-children li ul.ivu-tree-children .ivu-icon{
+  color:#cf1ffb;
+}
+.treeListStyle.ivu-tree .ivu-checkbox-indeterminate .ivu-checkbox-inner:after{
+  width: 8px;
+}
+.treeListStyle.ivu-tree .ivu-checkbox-checked .ivu-checkbox-inner:after{
+  height: 7px;
+  left: 4px;
+}
+.treeListStyle.ivu-tree ul li{
+  margin:0px;
+}
+.treeListStyle.ivu-tree .ivu-tree-title-selected,.treeListStyle.ivu-tree .ivu-tree-title-selected:hover,.treeListStyle.ivu-tree .ivu-tree-title{
+  background:rgba(0,0,0,0);
+}
+.leftDraw .leftMainContent .middleCont .listout{
+  width:99%;
+  height:68vh;
+  overflow:hidden;
+  
+}
+.leftDraw .leftMainContent .middleCont .listin{
+  width:100%;
+  height:68vh;
+  overflow-y:scroll;
+  text-align:left;
+}
+@media screen and (max-width: 1920px) {
+  .leftDraw .leftMainContent .middleCont .listout{
+      width:99%;
+      height:80vh;
+      overflow:hidden;
+      
+  }
+  .leftDraw .leftMainContent .middleCont .listin{
+      width:100%;
+      height:80vh;
+      overflow-y:scroll;
+      text-align:left;
+  }
+
+}
+@media screen and (max-width: 1366px) {
+  .leftDraw .leftMainContent .middleCont{
+      padding:0px 8px 0px 12px;
+  } 
+  .leftDraw .leftMainContent .middleCont .spareTitle{
+      margin-top:15px;
+      margin-bottom:20px;
+  }
+  .leftDraw .leftMainContent .middleCont .spareTitle .iconfont{
+      padding-right:3px;
+  }
+  /*粒子特效*/
+  .leftDraw .leftMainContent .middleCont .particle .img{
+      width:84px;
+      height:48px;
+  }
+  .leftDraw .leftMainContent .middleCont .particle .img img{
+      width:35px;
+      height:33px;
+  }
+  .leftDraw .leftMainContent .middleCont .particle .img:first-child{
+      margin-right:4px;
+  }
+  /*POI标绘*/
+  .leftDraw .leftMainContent .middleCont .poi{
+      width:100%;
+      height:100px;
+      overflow: hidden;
+  }
+  .leftDraw .leftMainContent .middleCont .poi .poismall{
+      width:107%;
+      height:100px;
+      overflow-y:scroll;
+  }
+  .leftDraw .leftMainContent .middleCont .poi .poismall .img{
+      width:35px;
+      height:35px;
+      margin-right:3px;
+      margin-bottom:17px;
+  }
+  .leftDraw .leftMainContent .middleCont .poi .poismall .img img{
+      width:22px;
+      height:22px;
+  }
+  /*GLB模型*/
+  .leftDraw .leftMainContent .middleCont .glb{
+      width:100%;
+      max-height:170px;
+  }
+  .leftDraw .leftMainContent .middleCont .glb .glbsmall{
+      width:110%;
+      max-height:170px;
+  }
+  .leftDraw .leftMainContent .middleCont .glb .glbsmall .img{
+      width:84px;
+      height:48px;
+      margin-right:4px; 
+      margin-bottom:9px;
+  }
+  .leftDraw .leftMainContent .middleCont .glb .glbsmall .img img{
+      width:52px;
+      height:40px;
+  }
+  /*tab标签*/
+  .tabcard{
+      margin:0px -6px;
+  }
+  .tabcard .ivu-tabs-nav .ivu-tabs-tab .ivu-icon{
+      width:20px !important;
+      height:10px !important;
+      font-size:12px;
+  }   
+}
+

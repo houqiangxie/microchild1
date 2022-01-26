@@ -1,0 +1,20 @@
+@font-face{
+  font-family: 'cyjth'; 
+  src:url('../css/font/cyjth.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'Microsoft YaHei'; 
+  src:url('../css/font/msyh.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'Microsoft YaHei1'; 
+  src:url('../css/font/msyhbd.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'FZY1JW'; 
+  src:url('../css/font/FZY1JW.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'cyjzy'; 
+  src:url('../css/font/cyjzy.ttf') format('truetype');
+}

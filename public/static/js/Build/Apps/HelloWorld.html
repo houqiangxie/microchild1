@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Use correct character set. -->
+    <meta charset="utf-8" />
+    <!-- Tell IE to use the latest, best version. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <title>3D Tiles服务测试</title>
+    <script src="../Cesium/Cesium.js"></script>
+    <script src="./extentGltf.js"></script>
+    <style>
+      @import url(../Cesium/Widgets/widgets.css);
+
+      html,
+      body,
+      #cesiumContainer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="cesiumContainer"></div>
+    <script>
+		var projObj = [6378137.0, 6378137.0, 6356752.3142451793];
+		Cesium.Ellipsoid.WGS84 = Object.freeze(new Cesium.Ellipsoid(projObj[0], projObj[1], projObj[2]));
+		//var projObj = [6378137.0, 6378137.0, 6356752.31414035585];
+		//Cesium.Ellipsoid.WGS84 = Object.freeze(new Cesium.Ellipsoid(projObj[0], projObj[1], projObj[2]));
+      var viewer = new Cesium.Viewer("cesiumContainer", {
+        // imageryProvider: new Cesium.WebMapTileServiceImageryProvider({
+        //   url:
+        //     "http://t1.tianditu.com/img_c/wmts?service=WMTS&version=1.0.0&request=GetTile&tilematrix={TileMatrix}&layer=img&style=default&tilerow={TileRow}&tilecol={TileCol}&tilematrixset=c&format=tiles&tk=4a00a1dc5387b8ed8adba3374bd87e5e",
+        //   layer: "img",
+        //   style: "default",
+        //   format: "tiles",
+        //   tileMatrixSetID: 'c',
+        //   subdomains: ['t0', 't1', 't2', 't3', 't4', 't5', 't6', 't7'],
+        //   maximumLevel: 17,
+        //   tilingScheme: new Cesium.GeographicTilingScheme(),
+        //   tileMatrixLabels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18']
+        // }),
+        baseLayerPicker: false
+      });
+      //服务地址以及政法委块数据平台的key
+      var resource = new Cesium.Resource({
+        url:"http://10.253.102.69/gw/TILE_3D_MODEL/sz/futian/tileset.json",
+        headers: {
+          "szvsud-license-key":"ZBGxP5HNTWsBm9CylbTb/y/fDUZ1tSSOuS7tGiA7R7MgAou3RBv+Cp2oQYrar2Fp"
+        }
+      });
+
+      var tileset = new Cesium.Cesium3DTileset({
+        url: resource
+      });
+      var layer = viewer.scene.primitives.add(tileset);
+	  layer.ptStyle = 0;
+      //显示刷新率和帧率
+      viewer.scene.debugShowFramesPerSecond = true;
+
+      tileset.readyPromise.then(function() {
+        viewer.scene.camera.flyToBoundingSphere(tileset.boundingSphere, {
+          duration: 2
+        });
+      });
+    </script>
+  </body>
+</html>

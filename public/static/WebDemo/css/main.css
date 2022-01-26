@@ -1,0 +1,54 @@
+﻿
+/**************************************说明*********************************************/
+/*@charset "utf-8";*/
+/**************************************完*********************************************/
+
+div{
+background-color: aliceblue;
+padding: 3px;
+margin: 0px;
+}
+label{
+    color: #FF3A19;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+}
+h3{
+    color: lightseagreen;
+}
+input, button, select, textarea, a {
+    outline: none;
+    margin: 5px;
+    border: 0px;
+}
+
+button{
+    background-color: lightgray;
+    height: 32px;
+}
+
+
+button { /* 按钮美化 */
+	border-width: 0px; /* 边框宽度 */
+	border-radius: 3px; /* 边框半径 */
+	background: #1E90FF; /* 背景颜色 */
+	cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+	outline: none; /* 不显示轮廓线 */
+	font-family: Microsoft YaHei; /* 设置字体 */
+	color: white; /* 字体颜色 */
+	font-size: 17px; /* 字体大小 */
+}
+button:hover { /* 鼠标移入按钮范围时改变颜色 */
+	background: #5599FF;
+}
+
+.tgl-flip + .tgl-btn:after { 
+    content: attr(data-tg-on); 
+    background: #02C66F; 
+    -webkit-transform: rotateY(-180deg); 
+            transform: rotateY(-180deg); 
+  } 
+  .tgl-flip + .tgl-btn:before { 
+    background: #FF3A19; 
+    content: attr(data-tg-off); 
+  }
